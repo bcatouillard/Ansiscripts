@@ -16,7 +16,7 @@ if($conn->connect_error){ // On vérifie si la connexion fonctionne ou non
 
 // Sinon on est connecté
 
-include($directory.".php"); // On exécute le script qui s'occupera de récupérer les différentes commandes à effectuer sur les postes.
+include($directory."get_tasks.php"); // On exécute le script qui s'occupera de récupérer les différentes commandes à effectuer sur les postes.
 
 $conn->close(); // On ferme la connexion à la base de donnée.
 
