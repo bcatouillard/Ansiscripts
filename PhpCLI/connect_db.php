@@ -1,5 +1,7 @@
 <?php
 
+$directory = "/home/cli/"; // On associe à une variable le répertoire où se situe l'ensemble des scripts
+
 $result = shell_exec("grep 'connect_db.php' /etc/crontab"); // Vérifie si dans le fichier crontab on a le script de connexion à la base de donnée
 
 if(empty($result)){ // On vérifie si le résultat est vide
@@ -13,8 +15,6 @@ if($conn->connect_error){ // On vérifie si la connexion fonctionne ou non
 }
 
 // Sinon on est connecté
-
-$directory = "/home/cli/"; // On associe à une variable le répertoire où se situe l'ensemble des scripts
 
 include($directory.".php"); // On exécute le script qui s'occupera de récupérer les différentes commandes à effectuer sur les postes.
 
