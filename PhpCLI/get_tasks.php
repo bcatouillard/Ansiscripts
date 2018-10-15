@@ -1,3 +1,4 @@
+// Script permettant la récupération des commandes à faire sur nos machines.
 <?php
 function getTasks($conn){
     $directory = "/home/cli/fichiers/"; // Variable à laquelle on associe le répertoire concernant les fichiers concernant les postes et commandes à effectuées.
