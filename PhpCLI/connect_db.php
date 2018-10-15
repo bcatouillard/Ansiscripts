@@ -1,3 +1,4 @@
+// Script permettant la connexion à la base de donnée et redirige vers les différentes tâches.
 <?php
 
 $directory = "/home/cli/"; // On associe à une variable le répertoire où se situe l'ensemble des scripts
