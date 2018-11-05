@@ -2,8 +2,19 @@
 <?php
 function getTasks($conn){
     $directory = "/home/cli/fichiers/"; // Variable à laquelle on associe le répertoire concernant les fichiers concernant les postes et commandes à effectuées.
+    $filename = "cmd.json";
     $query = "SELECT ipPoste, poste.nom, commande.cmd FROM executer inner join commande on executer.idCommande=commande.id inner join poste on executer.ipPoste=poste.adresseIP;"; // Variable à laquelle on associe la requête
-    
+    jsonParsing($conn, $directory, $filename, $query); // On appelle la fonction jsonParsing
+}
+
+function addPoste($conn){
+    $directory = "/home/cli/postes/"; // Variable à laquelle on associe le répertoire concernant les fichiers des postes
+    $filename = "poste.json"; // Variable à laquelle on associe le nom du fichier
+    $query = "SELECT adresseIP, nom FROM poste"; // Variable à laquelle on associe la requête
+    jsonParsing($conn, $directory, $filename, $query); // On appelle la fonction jsonParsing
+}
+
+function jsonParsing($conn, $directory, $filename, $query){
     $result = $conn->query($query); // On asssocie à la variable $result le résultat de la requête
     $ligne = $result->fetch_assoc(); // La variable $ligne récupère la valeur de $result mais sous forme d'un tableau associatif
     
@@ -12,6 +23,6 @@ function getTasks($conn){
     }
     
     $json = json_encode($ligne); // On encode nos résultats de la requête en JSON
-    shell_exec("echo $json >> /home/cli/fichiers/cmd.json"); // On l'écrit dans un fichier
+    shell_exec("echo $json >> $directory.$filename"); // On l'écrit dans un fichier
 }
 ?>
