@@ -23,6 +23,6 @@ function jsonParsing($conn, $directory, $filename, $query){
     }
     
     $json = json_encode($ligne); // On encode nos résultats de la requête en JSON
-    shell_exec("echo $json >> $directory.$filename"); // On l'écrit dans un fichier
+    shell_exec("echo $json >>". $directory.$filename); // On l'écrit dans un fichier
 }
 ?>
