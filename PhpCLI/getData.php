@@ -16,7 +16,7 @@ function addPoste($conn){
 
 function jsonParsing($conn, $directory, $filename, $query){
     $result = $conn->query($query); // On asssocie à la variable $result le résultat de la requête
-    $ligne = $result->fetch_assoc(); // La variable $ligne récupère la valeur de $result mais sous forme d'un tableau associatif
+    $ligne = $result->fetch_all(); // La variable $ligne récupère la valeur de $result mais sous forme d'un tableau associatif
     
     if(!is_dir($directory)){ // On vérifie si le répertoire où l'on va mettre nos fichiers existe
         shell_exec("mkdir $directory"); // S'il n'existe pas on le crée 
