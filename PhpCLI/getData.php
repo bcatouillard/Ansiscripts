@@ -1,14 +1,14 @@
 // Script permettant la récupération des commandes à faire sur nos machines.
 <?php
 function getTasks($conn){
-    $directory = "/home/cli/fichiers/"; // Variable à laquelle on associe le répertoire concernant les fichiers concernant les postes et commandes à effectuées.
+    $directory = getcwd()."/fichiers/"; // Variable à laquelle on associe le répertoire concernant les fichiers concernant les postes et commandes à effectuées.
     $filename = "cmd.json";
     $query = "SELECT ipPoste, poste.nom, commande.cmd FROM executer inner join commande on executer.idCommande=commande.id inner join poste on executer.ipPoste=poste.adresseIP;"; // Variable à laquelle on associe la requête
     jsonParsing($conn, $directory, $filename, $query); // On appelle la fonction jsonParsing
 }
 
 function addPoste($conn){
-    $directory = "/home/cli/postes/"; // Variable à laquelle on associe le répertoire concernant les fichiers des postes
+    $directory = getcwd()."/postes/"; // Variable à laquelle on associe le répertoire concernant les fichiers des postes
     $filename = "poste.json"; // Variable à laquelle on associe le nom du fichier
     $query = "SELECT adresseIP, nom FROM poste"; // Variable à laquelle on associe la requête
     jsonParsing($conn, $directory, $filename, $query); // On appelle la fonction jsonParsing
@@ -23,8 +23,11 @@ function jsonParsing($conn, $directory, $filename, $query){
     }
     
     $json = json_encode($ligne); // On encode nos résultats de la requête en JSON
-    if(!file_exists($directory.$filename) or empty(shell_exec("grep"." ".$json." ".$directory.$filename))){ //On vérifie si le contenu de notre variable json n'est pas déjà dans le fichier
+    if(!file_exists($directory.$filename)){ //On vérifie que le fichier existe
         shell_exec("echo $json >>". $directory.$filename); // On l'écrit dans un fichier
+    }
+    else{
+        shell_exec("echo $json >". $directory.$filename); // On l'écrit dans un fichier
     }
 }
 ?>
