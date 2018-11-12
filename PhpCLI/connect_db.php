@@ -1,7 +1,7 @@
 // Script permettant la connexion à la base de donnée et redirige vers les différentes tâches.
 <?php
 
-$directory = "/home/cli/"; // On associe à une variable le répertoire où se situe l'ensemble des scripts
+$directory = getcwd()."/"; // On associe à une variable le répertoire où se situe l'ensemble des scripts
 
 $result = shell_exec("crontab -l | grep 'connect_db.php'"); // Vérifie si dans le fichier crontab on a le script de connexion à la base de donnée
 
