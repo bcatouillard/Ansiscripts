@@ -16,8 +16,8 @@ if($conn->connect_error){
 echo "\n*****Connecté*****\n\n";
 
 require_once($directory."getData.php");
-getData::addPoste($conn);
-getData::getTasks($conn);
+addPoste($conn);
+getTasks($conn);
 
 $conn->close();
 ?>
