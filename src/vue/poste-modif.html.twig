@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Modification Poste {% endblock %}
+
+{% block contenu %}
+    
+    {% if form.message is defined %}
+        {% if form.valide == false %}
+
+            <h1 class="alert alert-danger" role="alert">{{form.message}}</h1> 
+            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=postes" style="color:#555;">Retourner sur la liste des postes</a></h1>
+        {% else %}
+            <h1 class="alert alert-success" role="alert">{{form.message}}</h1> 
+            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=postes" style="color:#555;">Retourner sur la liste des postes</a></h1>
+        {% endif %}  
+    {% else %}
+    
+        {% if form.poste is defined %}
+            {% if form.poste != null %}
+                <h1>Modifier Poste : {% if form.poste.nom != null %}{{form.poste.nom}}{%else%}{{form.poste.adresseIP}}{%endif%} </h1>
+
+                <form class="form-group" method="post" action="index.php?page=modifposte&ip={{form.poste.adresseIP}}">
+
+                    <input class="form-control" type="text" name="ip" id="ip" placeholder="Entrez la nouvelle adresse IP" value="{{form.poste.adresseIP}}">
+                    <br>
+                    <input class="form-control" type="text" name="nom" id="nom" placeholder="Entrez le nouveau nom" value="{{form.poste.nom}}">
+                    <br>
+
+                    <select class="form-control" name="fonc">
+                        {% for r in form.fonction %}
+                            {% if r.id==form.poste.idFonction %}
+                                 <option value="{{r.id}}" selected>{{r.libelle}}</option>
+                            {% else %}
+                                 <option value="{{r.id}}">{{r.libelle}}</option>   
+                            {% endif %}    
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <button class="btn btn-block btn-lg" name="btModifier" type="submit">Modifier</button>
+                </form>
+            {% endif %} 
+        {% endif %}
+    {% endif %}  
+{% endblock %}
