@@ -25,5 +25,5 @@ if($conn != null){ // On vérifie que la connexion est différente de null
     getData::addPoste($conn); // Appel à la fonction addPoste du fichier getData.php
     getData::getTasks($conn); // Appel à la fonction getTasks du fichier getData.php
 }
-$conn->close(); // Fermeture de la connexion à la base de donnée
+
 ?> 
