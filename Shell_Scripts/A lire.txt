@@ -1,3 +1,11 @@
 Pour le bon fonctionnement du script il faut :
  - autoriser la connexion en root pour pouvoir ajouter les machine.
  - modifier correctement les droit des script et des fichier xml généré.
+
+
+
+
+exec.php et le corps du script, il permets de récupérer les données et d'executer les scripts avec les données récupérer dans le(s) fichier(s) xml
+addMachine.sh permets d'éditer le fichier /etc/ansible/hosts pour ajouter la machine si elle est connecter au réseaux.
+co.sh sert a crée et envoyer une clé priver a la machine cible en root
+exeCmd.sh execute les commande a l'aide de ansible <nom de la machine> -a "<commande>"
