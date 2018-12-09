@@ -1,0 +1,3 @@
+Pour le bon fonctionnement du script il faut :
+ - autoriser la connexion en root pour pouvoir ajouter les machine.
+ - modifier correctement les droit des script et des fichier xml généré.
