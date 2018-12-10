@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block title %} Modification Executer {% endblock %}
+{% block contenu %}
+    
+    {% if form.message is defined %}
+        {% if form.valide == false %}
+
+            <h1 class="alert alert-danger" role="alert">{{form.message}}</h1> 
+            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=executer" style="color:#555;">Retourner sur la liste des executions</a></h1>
+        {% else %}
+            <h1 class="alert alert-success" role="alert">{{form.message}}</h1> 
+            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=executer" style="color:#555;">Retourner sur la liste des executions</a></h1>
+        {% endif %}  
+    {% else %}
+    
+        {% if form.cmdeffect is defined %}
+            {% if form.cmdeffect != null %}
+                <h1>Modifier la commande à exécuter : {% if form.executer.ipPoste != null %}{{form.commande.ipPoste}}{%else%}{{form.commande.idCommande}}{%endif%} </h1>
+
+                <form class="form-signin" method="post" action="index.php?page=executer-modif&ip={{form.cmdeffect.ipPoste}}&cmd={{form.cmdeffect.idCommande}}">
+
+                    <select class="form-control" name="cmd">
+                         {% for c in commande %}
+                            {% if c.idCommande == form.cmdeffect.idCommande%} 
+                                <option value="{{ c.id }}" selected>{{ c.descriptif }}</option> 
+                            {% else %}
+                                <option value="{{ c.id }}">{{ c.descriptif }}</option> 
+                            {% endif %}
+                         {% endfor %}
+                     </select>
+                     <select class="form-control" name="ip">
+                         {% for p in poste %}
+                            {% if p.ipPoste == form.cmdeffect.ipPoste%}
+                                <option value="{{ p.ipPoste }}" selected>{{p.libelle}} {{p.nom}} : {{ p.adresseIP }}</option>       
+                            {% else %}
+                                <option value="{{ p.ipPoste }}">{{p.libelle}} {{p.nom}} : {{ p.adresseIP }}</option>       
+                            {% endif %}
+                         {% endfor %}
+                     </select>
+                    <br>
+                    <button class="btn btn-block btn-lg" name="btModifier" type="submit">Modifier</button>
+                </form>
+            {% endif %} 
+        {% endif %}
+    {% endif %}  
+{% endblock %}

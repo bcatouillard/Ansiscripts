@@ -8,11 +8,10 @@
 must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>SI7 Ansible - 
-{% block title %} {% endblock %}
-</title>
+        <title>SI7 Ansible - {% block title %} {% endblock %}</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="images/ansible.png" />      
  {% block style %} {% endblock %}
     </head>    
     <body>
@@ -34,9 +33,10 @@ must come *after* these tags -->
           Menu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="index.php?page=utilisateurs">Utilisateurs</a>
           <a class="dropdown-item" href="index.php?page=commandes">Commandes</a>
           <a class="dropdown-item" href="index.php?page=postes">Postes</a>
+          <a class="dropdown-item" href="index.php?page=executer">Exécuter</a>
+          <a class="dropdown-item" href="index.php?page=utilisateurs">Utilisateurs</a>
         </div>
           {% endif %}
               {% endif %}

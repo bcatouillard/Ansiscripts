@@ -6,6 +6,7 @@ function  getPage($db){
     $lesPages['inscription'] = "actionInscription;0";
     $lesPages['maintenance'] = "actionMaintenance";
     
+    
     //panel admin
         //utilisateur
     $lesPages['utilisateurs'] = "actionUtilisateurs;1";
@@ -19,6 +20,9 @@ function  getPage($db){
         //Commandes
     $lesPages['commandes'] = "actionCommandes;1";
     $lesPages['commande-modif'] = "actionModCommande;1";
+        //Exécution de commande
+    $lesPages['executer']= "actionExecuter;1";
+    $lesPages['executer-modif']="actionModifExecuter;1";
     
     $contenu = $lesPages['accueil']; 
     

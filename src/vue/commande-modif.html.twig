@@ -11,7 +11,7 @@
             <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=commandes" style="color:#555;">Retourner sur la liste des commandes</a></h1>
         {% else %}
             <h1 class="alert alert-success" role="alert">{{form.message}}</h1> 
-            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=postes" style="color:#555;">Retourner sur la liste des commandes</a></h1>
+            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=commandes" style="color:#555;">Retourner sur la liste des commandes</a></h1>
         {% endif %}  
     {% else %}
     
@@ -19,11 +19,11 @@
             {% if form.commande != null %}
                 <h1>Modifier commande : {% if form.commande.cmd != null %}{{form.commande.cmd}}{%else%}{{form.commande.descriptif}}{%endif%} </h1>
 
-                <form class="form-group" method="post" action="index.php?page=commande-modif&id={{form.commande.id}}">
+                <form class="form-signin" method="post" action="index.php?page=commande-modif&id={{form.commande.id}}">
 
                     <input class="form-control" type="text" name="cmd" id="cmd" placeholder="Entrez la nouvelle commande" value="{{form.commande.cmd}}">
                     <br>
-                    <input class="form-control" type="text" name="descriptif" id="descriptif" placeholder="Entrez le nouveau descriptif" value="{{form.commande.descriptif}}">
+                    <input class="form-control" type="text" name="descriptif" id="descriptif" placeholder="Entrez le descriptif de la commande" value="{{form.commande.descriptif}}">
                     <br>
                     <button class="btn btn-block btn-lg" name="btModifier" type="submit">Modifier</button>
                 </form>

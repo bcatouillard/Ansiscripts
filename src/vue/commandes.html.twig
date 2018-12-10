@@ -21,7 +21,7 @@
                           <th scope="row">{{u.cmd}}</th>
                           <td>{{u.descriptif}}</td>
                           <td><a class="btn btn-info" href="index.php?page=commande-modif&id={{u.id}}">Modifier</a></td>
-                          <td><a class="btn btn-danger "href="index.php?page=commandes&supp={{u.id}}"> Supprimer </a></td>
+                          <td><a class="btn btn-danger "href="index.php?page=commandes&supp={{u.id}}">Supprimer</a></td>
                         </tr>
                     {% endfor %}     
                 </tbody>
@@ -38,5 +38,7 @@
                 <input type="text" class="form-control" id="descriptif" name="descriptif" placeholder="Ex : installer un paquet ">
                 <br>
                 <button class="btn btn-block" name="btAjout" type="submit">Ajouter la commande</button>
-            </form>  
+            </form> 
+        </div>
+    </div>
 {% endblock %}

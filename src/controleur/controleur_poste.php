@@ -3,7 +3,6 @@
 function actionPoste($twig, $db){  
     $poste = new Poste($db);
     $fonction = new Fonction($db);
-    
     $liste = array();
     $form = array();
     
@@ -38,7 +37,7 @@ function actionPoste($twig, $db){
         if(!$exec)
         {
             $form['valide'] = false;
-            $form['message'] = "erreur lors de la suppresion";
+            $form['message'] = "Erreur lors de la suppression";
         }
     }
     
@@ -80,7 +79,7 @@ function actionModPoste($twig, $db)
             $form['message'] = "Erreur lors de la modification du poste";
         }else{
             $form['valide'] = true;
-            $form['message'] = "Modification réussi";
+            $form['message'] = "Modification réussie";
         }
     }
     

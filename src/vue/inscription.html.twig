@@ -11,7 +11,8 @@
                <h1 class="h3 mb-3 font-weight-normal">Vous êtes super administrateur du site</h1>
            {% else %}
                <h1 class="h3 mb-3 font-weight-normal">Vous êtes un membre du site </h1>
-           {% endif %}    
+           {% endif %}  
+           <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=connexion">Se connecter</a></h1>
         {% else %} 
             <h1 class="h3 mb-3 font-weight-normal">Echec de l'inscription</h1> 
             <h1 class="h3 mb-3 font-weight-normal">Erreur : {{form.message}}</h1>

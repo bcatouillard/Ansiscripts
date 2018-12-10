@@ -19,7 +19,7 @@
             {% if form.poste != null %}
                 <h1>Modifier Poste : {% if form.poste.nom != null %}{{form.poste.nom}}{%else%}{{form.poste.adresseIP}}{%endif%} </h1>
 
-                <form class="form-group" method="post" action="index.php?page=modifposte&ip={{form.poste.adresseIP}}">
+                <form class="form-signin" method="post" action="index.php?page=modifposte&ip={{form.poste.adresseIP}}">
 
                     <input class="form-control" type="text" name="ip" id="ip" placeholder="Entrez la nouvelle adresse IP" value="{{form.poste.adresseIP}}">
                     <br>

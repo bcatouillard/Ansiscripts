@@ -25,15 +25,18 @@ function actionCommandes($twig, $db)
     //Supp
     if( isset($_GET['supp']) )
     {
+        $executer = new executer($db);
+        
         $form['valide'] = true;
         $form['message'] = "la commande : ".$_GET['supp']." a bien était supprimée";
             
+        $executer->Delete($_GET['supp']);
         $exec = $commande->delete($_GET['supp']);
         
         if(!$exec)
         {
             $form['valide'] = false;
-            $form['message'] = "erreur lors de la suppresion";
+            $form['message'] = "Erreur lors de la suppression";
         }
     }
     
@@ -73,7 +76,7 @@ function actionModCommande($twig, $db)
             $form['message'] = "Erreur lors de la modification de la commande";
         }else{
             $form['valide'] = true;
-            $form['message'] = "Modification réussi";
+            $form['message'] = "Modification réussie";
         }
     }
     
