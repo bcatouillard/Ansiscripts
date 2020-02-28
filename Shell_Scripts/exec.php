@@ -4,8 +4,10 @@
 
   //Variable url des documents/scripts
   $docUrlPoste = "/var/www/html/donnee.xml"; //fichier xml des postes
+
   $docUrlCmd = "/var/www/html/donnee.xml";  //fichier xml des commandes
   $urlScript = "/home/cli/script"; //dossier des scripts
+
 
 
   $doc = new DOMDocument();
