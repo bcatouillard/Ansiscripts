@@ -45,11 +45,11 @@
 
 //XML : Commande a executer
 
-  $doc2 = new DOMDocument();
 
-  $doc2->load( $docUrlCmd );
+  $doc->load( $docUrlCmd );
 
-  $cmd = $doc2->getElementsByTagName("Commande");
+  $cmd = $doc->getElementsByTagName("Commande");
+
 
   foreach($cmd as $cmd)
   {
