@@ -4,8 +4,10 @@
 
   //Variable url des documents/scripts
   $docUrlPoste = "/var/www/html/donnee.xml"; //fichier xml des postes
-  $docUrlCmd = "/var/ww/html/donnee.xml";  //fichier xml des commandes
-  $urlScript = "/home/cli/script" //dossier des scripts
+
+  $docUrlCmd = "/var/www/html/donnee.xml";  //fichier xml des commandes
+  $urlScript = "/home/cli/script"; //dossier des scripts
+
 
 
   $doc = new DOMDocument();
@@ -45,9 +47,11 @@
 
 //XML : Commande a executer
 
+
   $doc->load( $docUrlCmd );
 
   $cmd = $doc->getElementsByTagName("Commande");
+
 
   foreach($cmd as $cmd)
   {
