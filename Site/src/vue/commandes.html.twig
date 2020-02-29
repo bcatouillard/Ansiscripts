@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
+{% block title %} {{ parent() }} Liste des commmandes {% endblock %}
+{% block contenu %} 
+    <div class="row">
+        <div class="col col-lg-6 md-6 sm-12">
+            <h2 class="h3 mb-3 font-weight-normal">Liste des commandes :</h2>
+            <br>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom de la commande</th>
+                        <th scope="col">Descriptif</th>
+                        <th scope="col">Modifier</th>
+                        <th scope="col"> Supprimer</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    {% for u in liste.commande %}
+                        <tr>
+                          <th scope="row">{{u.cmd}}</th>
+                          <td>{{u.descriptif}}</td>
+                          <td><a class="btn btn-info" href="index.php?page=commande-modif&id={{u.id}}">Modifier</a></td>
+                          <td><a class="btn btn-danger "href="index.php?page=commandes&supp={{u.id}}">Supprimer</a></td>
+                        </tr>
+                    {% endfor %}     
+                </tbody>
+            </table>
+        </div>
+        <div class="col col-lg-6 md-6 sm-12">
+            <h2 class="h3 mb-3 font-weight-normal">Ajouter une commande :</h2>
+            <br>
+            <form class="form-signin" action="index.php?page=commandes" method="post" enctype="application/x-www-form-urlencoded">
+                <libelle for="nom">Nom de la commande : </libelle>
+                <input type="text" class="form-control" id="cmd" name="cmd" placeholder="Ex : apt-get install ">
+                <br>
+                <libelle for="ip">Descriptif : </libelle>
+                <input type="text" class="form-control" id="descriptif" name="descriptif" placeholder="Ex : installer un paquet ">
+                <br>
+                <button class="btn btn-block" name="btAjout" type="submit">Ajouter la commande</button>
+            </form> 
+        </div>
+    </div>
+{% endblock %}

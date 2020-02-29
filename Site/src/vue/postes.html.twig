@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
+{% block title %} {{ parent() }} Liste des postes {% endblock %}
+{% block contenu %} 
+            {% if form.valide is defined %}
+            {% if form.valide == true %}
+                <h1 class="alert alert-success" role="alert">{{form.message}}</h1> 
+            {% else %}
+                <h1 class="alert alert-success" role="alert">{{form.message}}</h1> 
+            {% endif %}
+            <br>
+        {% endif %}
+    <div class="row">
+        <div class="col col-lg-6 md-6 sm-12">
+            <h2 class="h3 mb-3 font-weight-normal">Liste des postes :</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nom du poste</th>
+                    <th scope="col">Adresse IP</th>
+                    <th scope="col">Fonction</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                 </tr>
+            </thead>
+            <tbody>
+                {% for u in liste.poste %}
+                    <tr>
+                      <th scope="row">{{u.nom}}</th>
+                      <td><a href="http://{{u.adresseIP}}">{{u.adresseIP}}</a></td>
+                      <td
+                      <td>{{u.libelle}}</td>
+                      <td><a class="btn btn-info " href="index.php?page=modifposte&ip={{u.adresseIP}}">Modifier</a></td>
+                      <td><a class="btn btn-danger" href="index.php?page=postes&supp={{u.adresseIP}}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+            
+        <div class="col col-lg-6 md-6 sm-12">
+        <h2 class="h3 mb-3 font-weight-normal">Ajouter un poste :</h2>
+        <form class="form-signin" action="index.php?page=postes" method="post" enctype="application/x-www-form-urlencoded">
+            <libelle for="nom">Nom de la machine : </libelle>
+            <input type="text" class="form-control" id="nom" name="nom" placeholder="Ex : Serveur_BdD">
+            <br>
+            <libelle for="ip">Ip : </libelle>
+            <input type="text" class="form-control" id="ip" name="ip" placeholder="Ex : 192.168.16.81 Ou www.exemple.com">
+            <br>
+            <libelle for="role">Fonction de la Machine</libelle>
+            <select class="form-control" name="fonc" id="fonc">
+                {% for f in liste.fonction %}
+                    <option value="{{f.id}}">{{f.libelle}}</option>
+                {% endfor %}
+                <option value="null">Autre... (Attention le formulaire sera vidé)</option>
+            </select>
+            <br>
+            <button class="btn btn-block" name="btMod" type="submit">Ajouter la machine</button>
+        </form>
+        </div>
+    </div>
+{% endblock %}
